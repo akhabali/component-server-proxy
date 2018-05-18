@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.talend.sdk.component</groupId>
+  <artifactId>component-server-proxy</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <properties>
+    <play.version>2.6.13</play.version>
+    <scala.version>2.12</scala.version>
+    <playx.version>0.0.1</playx.version>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <!-- cdi -->
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jcdi_2.0_spec</artifactId>
+      <scope>compile</scope>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-el_2.2_spec</artifactId>
+      <scope>compile</scope>
+      <version>1.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-annotation_1.3_spec</artifactId>
+      <scope>compile</scope>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-atinject_1.0_spec</artifactId>
+      <scope>compile</scope>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-interceptor_1.2_spec</artifactId>
+      <scope>compile</scope>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-se</artifactId>
+      <scope>compile</scope>
+      <version>2.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.rmannibucau</groupId>
+      <artifactId>playx-cdi</artifactId>
+      <version>${playx.version}</version>
+    </dependency>
+
+    <!-- servlet -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-servlet-api</artifactId>
+      <scope>compile</scope>
+      <version>9.0.8</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.rmannibucau</groupId>
+      <artifactId>playx-servlet</artifactId>
+      <version>${playx.version}</version>
+    </dependency>
+
+    <!-- JAX-RS-CDI / CXF implementation -->
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jaxrs_2.1_spec</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-integration-cdi</artifactId>
+      <version>3.2.4</version>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.enterprise</groupId>
+          <artifactId>cdi-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>javax.inject</groupId>
+          <artifactId>javax.inject</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>javax.ws.rs</groupId>
+          <artifactId>javax.ws.rs-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- JSON-B for the serialization -->
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jsonb_1.0_spec</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-json_1.1_spec</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.johnzon</groupId>
+      <artifactId>johnzon-jsonb</artifactId>
+      <version>1.1.7</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <forceJavacCompilerUse>true</forceJavacCompilerUse>
+          <compilerId>javac</compilerId>
+          <fork>true</fork>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+
+
+</project>
